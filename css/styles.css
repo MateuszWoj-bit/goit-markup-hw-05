@@ -7,6 +7,8 @@
   --grey-color: #757575;
   --grey-background-color: #f5f4fa;
   --black-color: #000000;
+  --black-backdrop-color: #00000033;
+  --black-border10-color: #0000001a;
   --panetone-color: #2f303a;
   --panetone-opacity-color: #2f303acc;
   --border-color: #ececec;
@@ -15,54 +17,97 @@
   --social-backgroud-footer: #ffffff1a;
 }
 
-.skrytka{
-padding: 49px 45px 49px 24px;  
-position: absolute;
-top:0;
-background-color: var(--brand-color-opacity);
-font-size: 18px;
-line-height: 1.56;
-color: var(--white-color);
-/* or 156% */
-
-letter-spacing: 0.03em;
-transform: translate(0%, 120%);
-        transition: transform 400ms linear;
-
+#backdrop,
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--black-backdrop-color);
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  transition: opacity 2000ms, visibility 2000ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.skrytka-box{
+
+.modal {
+  height: 581px;
+  width: 528px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--white-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.modal-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--white-color);
+  border: 1px solid var(--black-border10-color);
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+}
+
+.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.skrytka {
+  padding: 49px 45px 49px 24px;
+  position: absolute;
+  top: 0;
+  background-color: var(--brand-color-opacity);
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--white-color);
+  letter-spacing: 0.03em;
+  transform: translate(0%, 120%);
+  transition: transform 400ms linear;
+}
+.skrytka-box {
   position: relative;
-        overflow: hidden;
+  overflow: hidden;
 }
 .portfolio-content-figure:hover .skrytka {
-        transform: translate(0, 0);
-      }
+  transform: translate(0, 0);
+}
 
-
-*:hover, *:focus {
+:hover,
+:focus {
   transition-property: color, fill, background-color, box-shadow, border-radius;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}  
+}
 
-.nav1{position: relative;}
-.nav1::after{
-  content: "";
+.nav1 {
+  position: relative;
+}
+.nav1::after {
+  content: '';
   position: absolute;
   border-bottom: solid 4px #2196f3;
   top: 43px;
   width: 53px;
 }
-.nav2{position: relative;}
-.nav2::after{
-  content: "";
+.nav2 {
+  position: relative;
+}
+.nav2::after {
+  content: '';
   position: absolute;
   border-bottom: solid 4px #2196f3;
   top: 43px;
   left: 99px;
   width: 58px;
 }
-
 
 .what-we-do-figure {
   position: relative;
@@ -181,9 +226,12 @@ ul {
   fill: var(--grey-color);
   margin-top: 10px;
 }
-.contact:hover,.contact:focus,
-.contact .grey:focus, .menu:focus,
-.phone:hover, .phone:focus {
+.contact:hover,
+.contact:focus,
+.contact .grey:focus,
+.menu:focus,
+.phone:hover,
+.phone:focus {
   color: var(--brand-color);
   fill: var(--brand-color);
   --icon-color: var(--brand-color);

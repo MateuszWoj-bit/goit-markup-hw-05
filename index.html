@@ -57,7 +57,7 @@
             Efektywne rozwiązania<br />
             dla waszego biznesu
           </h2>
-          <button type="button">Zamów usługe</button>
+          <button data-modal-open type="button">Zamów usługe</button>
         </div>
       </section>
       <div class="section">
@@ -412,5 +412,11 @@
         </section>
       </div>
     </footer>
+    <div id="backdrop" class="backdrop is-hidden" data-modal>
+      <div class="modal">
+        <button data-modal-close class="modal-button">x</button>
+      </div>
+    </div>
+    <script src="./js/modal.js"></script>
   </body>
 </html>
